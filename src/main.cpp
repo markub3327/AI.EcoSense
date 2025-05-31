@@ -1,0 +1,23 @@
+#include <Arduino.h>
+
+#include "programs/task_manager.hpp"
+
+
+TaskManager task_manager;
+
+void setup() {
+    // put your setup code here, to run once:
+    Serial.begin(9600);
+    Serial.println("AIGarden");
+    Serial.println("Starting...");
+
+    pinMode(LED_BUILTIN, OUTPUT);
+
+    analogReadResolution(12);
+
+    task_manager.begin();
+}
+
+void loop() {
+    task_manager.manage();
+}
