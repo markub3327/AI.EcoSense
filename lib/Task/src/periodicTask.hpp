@@ -16,6 +16,8 @@ public:
     ~PeriodicTask() override = default;
 
     void run() override {
+        if (this->getState() == PAUSE) return;
+
         unsigned long currentMillis = millis();
 
         // counter-overflow detection:

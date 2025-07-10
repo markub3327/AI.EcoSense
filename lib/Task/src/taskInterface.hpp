@@ -1,9 +1,10 @@
 #pragma once
 
 enum TaskState {
-  RUNNING = 0,
-  READY   = 1,
-  WAITING = 2,
+    RUNNING = 0,
+    READY   = 1,
+    WAITING = 2,
+    PAUSE = 3,
 };
 
 class TaskInterface {

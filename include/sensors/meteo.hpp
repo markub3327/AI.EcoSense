@@ -5,13 +5,14 @@
 #include "sensorInterface.hpp"
 
 class Meteo final : public SensorInterface {
-    BLEFloatCharacteristic tempChar;
+    BLEFloatCharacteristic tempChar, temp2Char;
     BLEFloatCharacteristic humidityChar;
     BLEFloatCharacteristic pressureChar;
 
 public:
-    Meteo(const char* tempUuid, const char* humUuid, const char* presUuid)
+    Meteo(const char* tempUuid, const char* temp2Uuid, const char* humUuid, const char* presUuid)
     : tempChar(tempUuid, BLERead | BLENotify),
+      temp2Char(temp2Uuid, BLERead | BLENotify),
       humidityChar(humUuid, BLERead | BLENotify),
       pressureChar(presUuid, BLERead | BLENotify)
     { }
@@ -30,15 +31,20 @@ public:
         this->update();
     }
 
-  void addCharacteristic(BLEService &service) override {
-    service.addCharacteristic(tempChar);
-    service.addCharacteristic(humidityChar);
-    service.addCharacteristic(pressureChar);
-  }
+    void addCharacteristic(BLEService &service) override {
+        service.addCharacteristic(tempChar);
+        service.addCharacteristic(temp2Char);
+        service.addCharacteristic(humidityChar);
+        service.addCharacteristic(pressureChar);
+    }
 
-  void update() override {
-    this->tempChar.writeValue(HTS.readTemperature());
-    this->humidityChar.writeValue(HTS.readHumidity());
-    this->pressureChar.writeValue(BARO.readPressure() * 10.0f);    // convert to hPa
-  }
+    void update() override {
+        // HTS221
+        this->tempChar.writeValue(HTS.readTemperature());
+        this->humidityChar.writeValue(HTS.readHumidity());
+
+        // LPS22HB
+        this->temp2Char.writeValue(BARO.readTemperature());
+        this->pressureChar.writeValue(BARO.readPressure() * 10.0f);    // convert to hPa
+    }
 };

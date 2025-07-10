@@ -59,8 +59,8 @@ public:
             Serial.println("starting BLE failed!");
             this->status = FAILED;
         }
-        BLE.setDeviceName("AIGarden");
-        BLE.setLocalName("AIGarden");
+        BLE.setDeviceName("AI.EcoSense");
+        BLE.setLocalName("AI.EcoSense");
     }
 
     void addService(BLEService &service) const {

@@ -1,9 +1,9 @@
 # AI.EcoSense 🌿 Smart Home & Garden Automation System
 
-[![Latest Release](https://img.shields.io/github/release/markub3327/AIGarden)](https://github.com/markub3327/AIGarden/releases)
-[![Open Issues](https://img.shields.io/github/issues/markub3327/AIGarden)](https://github.com/markub3327/AIGarden/issues)
-[![Weekly Commits](https://img.shields.io/github/commit-activity/w/markub3327/AIGarden)](https://github.com/markub3327/AIGarden)
-[![Repository Size](https://img.shields.io/github/repo-size/markub3327/AIGarden)](https://github.com/markub3327/AIGarden)
+[![Latest Release](https://img.shields.io/github/release/markub3327/AI.EcoSense)](https://github.com/markub3327/AI.EcoSense/releases)
+[![Open Issues](https://img.shields.io/github/issues/markub3327/AI.EcoSense)](https://github.com/markub3327/AI.EcoSense/issues)
+[![Weekly Commits](https://img.shields.io/github/commit-activity/w/markub3327/AI.EcoSense)](https://github.com/markub3327/AI.EcoSense)
+[![Repository Size](https://img.shields.io/github/repo-size/markub3327/AI.EcoSense)](https://github.com/markub3327/AI.EcoSense)
 
 ## 🌱 Overview
 

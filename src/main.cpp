@@ -8,7 +8,7 @@ TaskManager task_manager;
 void setup() {
     // put your setup code here, to run once:
     Serial.begin(9600);
-    Serial.println("AIGarden");
+    Serial.println("AI.EcoSense");
     Serial.println("Starting...");
 
     pinMode(LED_BUILTIN, OUTPUT);
