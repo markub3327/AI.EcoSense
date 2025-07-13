@@ -5,6 +5,7 @@
 .piolibdeps/
 pioenvs/
 piolibdeps/
+lib/
 
 # IDEs
 .idea/
