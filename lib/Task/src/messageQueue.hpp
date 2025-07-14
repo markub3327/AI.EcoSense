@@ -7,20 +7,21 @@ class MessageQueue final : public MessageInterface<T> {
     static constexpr uint8_t MESSAGE_CAPACITY = 16;
 
     T _data[MESSAGE_CAPACITY];
-    uint8_t _size, _head;
+    uint8_t _size, _head, _tail;
 
     // used for parallel safety operations
     bool isFull() const { return this->_size == MESSAGE_CAPACITY; }
     bool isEmpty() const { return this->_size == 0; }
 
 public:
-    MessageQueue() : _size(0), _head(0) {}
+    MessageQueue() : _size(0), _head(0), _tail(0) {}
     ~MessageQueue() override = default;
 
     bool send(const T& data) override {
         // lock the writing to the message (mutex)
         if (this->isFull()) return false;
-        this->_data[this->_size] = data;
+        this->_data[this->_tail] = data;
+        this->_tail = (this->_tail + 1) % MESSAGE_CAPACITY;
         this->_size += 1;
         return true;
     }

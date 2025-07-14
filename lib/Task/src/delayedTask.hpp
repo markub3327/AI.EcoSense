@@ -9,7 +9,7 @@
 class DelayedTask : public PeriodicTask {
 public:
     template<typename... Args>
-    DelayedTask(Args&&... args) : PeriodicTask(std::forward<Args>(args)...) {}
+    DelayedTask(const unsigned long period) : PeriodicTask(period) {}
 
     void run() override {
         PeriodicTask::run();
