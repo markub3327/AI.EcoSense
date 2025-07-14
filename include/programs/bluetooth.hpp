@@ -13,6 +13,7 @@ enum BLEStatus {
 class Bluetooth final : public PeriodicTask {
     BLEDevice central;
     BLEStatus status;
+    BLEService service = {"19B10000-F8F2-537E-4F6C-D104768A1215"};
 
     bool connected() const { return central.connected(); }
 
@@ -61,14 +62,11 @@ public:
         }
         BLE.setDeviceName("AI.EcoSense");
         BLE.setLocalName("AI.EcoSense");
-    }
-
-    void addService(BLEService &service) const {
-        if (this->status == INITIALIZING) {
-            BLE.setAdvertisedService(service);
-            BLE.addService(service);
-        }
+        BLE.setAdvertisedService(service);
+        BLE.addService(service);
     }
 
     BLEStatus getStatus() const { return this->status; }
+
+    BLEService& getService() { return this->service; }
 };

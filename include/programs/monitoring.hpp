@@ -9,7 +9,6 @@
 
 
 class Monitoring final : public PeriodicTask {
-    BLEService service = {"19B10000-F8F2-537E-4F6C-D104768A1215"};
     MessageQueue<int> soilMoistureMsg;
 
     SoilMoisture soilMoistureChar[6] = {
@@ -41,15 +40,17 @@ public:
     explicit Monitoring(Args&&... args) : PeriodicTask(std::forward<Args>(args)...)
     { }
 
-    void begin() override {
-      for (auto & it : this->soilMoistureChar) {
-        it.addCharacteristic(this->service);
-        it.begin();
-      }
-
-      meteoChar.addCharacteristic(this->service);
-      meteoChar.begin();
+    void addCharacteristic(BLEService& service) {
+        for (auto & it : this->soilMoistureChar) {
+            it.addCharacteristic(service);
+        }
+        meteoChar.addCharacteristic(service);
     }
 
-    BLEService& getService() { return this->service; }
+    void begin() override {
+      for (auto & it : this->soilMoistureChar) {
+        it.begin();
+      }
+      meteoChar.begin();
+    }
 };

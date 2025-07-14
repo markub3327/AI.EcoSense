@@ -39,7 +39,6 @@ class Pump final : public PeriodicTask {
         this->pumpSpeedChar.writeValue(this->speed);
     }
 
-    BLEService *service;
     BLEByteCharacteristic pumpSpeedChar;
     _watering_X_min watering_5_min;
     _watering_X_min watering_10_min;
@@ -48,21 +47,19 @@ class Pump final : public PeriodicTask {
 public:
     template<typename... Args>
     explicit Pump(Args&&... args) : PeriodicTask(std::forward<Args>(args)...),
-        service(nullptr),
         pumpSpeedChar("19B11A01-F8F2-537E-4F6C-D104768A1215", BLERead | BLENotify),
         watering_5_min(this, 5),
         watering_10_min(this, 10)
     { }
 
-    void begin() override {
-        if (this->service)
-            this->service->addCharacteristic(pumpSpeedChar);
+    void addCharacteristic(BLEService& service) {
+        service.addCharacteristic(pumpSpeedChar);
+    }
 
+    void begin() override {
         pinMode(PUMP_PIN, OUTPUT);
 
         // Pump programs init
         this->watering_10_min.begin();
     }
-
-    void setService(BLEService &service) { this->service = &service; }
 };
