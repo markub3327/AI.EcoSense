@@ -1,0 +1,12 @@
+[Unit]
+Description=BLE IoT Hub
+After=network.target
+
+[Service]
+User=pi
+Group=pi
+ExecStart=/usr/bin/python3 /home/pi/BLE_IoT_hub/main.py
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
