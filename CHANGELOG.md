@@ -1,11 +1,9 @@
 # Changes
 
-## v2.0.0 (May 8, 2025)
+## v1.0.0 (Jul 18, 2025)
 ### AI.EcoSense
-- Watering forecasting
-- Weather forecasting
 - Raspberry Pi <---  |BLE|  ---> Arduino 33 BLE Sense
 - InfluxDB integration
 - Grafana integration
 - Alert system
-- Solar panel support
+- Solar panel support with power manager

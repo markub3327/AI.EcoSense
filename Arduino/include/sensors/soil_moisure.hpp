@@ -23,10 +23,10 @@ public:
 
     void update() override {
         // Read sensor
-        this->characteristic.writeValue(analogRead(this->pin)); // 100 - map(analogRead(this->pinRead), 0, ADC_LEVELS, 0, 100);
+        this->characteristic.writeValue(analogRead(this->pin));
     }
 
-    uint16_t getValue() const {
-        return 0;
+    uint16_t getValue() {
+        return this->characteristic.value();
     }
 };

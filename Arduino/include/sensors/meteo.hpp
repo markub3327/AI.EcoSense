@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Arduino_HTS221.h>
+#include <Arduino_HS300x.h>
 #include <Arduino_LPS22HB.h>
 #include "sensorInterface.hpp"
 
@@ -19,7 +19,7 @@ public:
     ~Meteo() override = default;
 
     void begin() override {
-        if (!HTS.begin()) {
+        if (!HS300x.begin()) {
           Serial.println("Failed to initialize humidity temperature sensor!");
         }
 
@@ -39,12 +39,26 @@ public:
     }
 
     void update() override {
-        // HTS221
-        this->tempChar.writeValue(HTS.readTemperature());
-        this->humidityChar.writeValue(HTS.readHumidity());
+        // HS300x
+        auto t1 = HS300x.readTemperature();
+        auto h = HS300x.readHumidity();
+        this->tempChar.writeValue(t1);
+        this->humidityChar.writeValue(h);
+
+        // Serial.print("Temp1: ");
+        // Serial.println(t1);
+        // Serial.print("Humidity: ");
+        // Serial.println(h);
 
         // LPS22HB
-        this->temp2Char.writeValue(BARO.readTemperature());
-        this->pressureChar.writeValue(BARO.readPressure() * 10.0f);    // convert to hPa
+        auto t2 = BARO.readTemperature();
+        auto p = BARO.readPressure() * 10.0f;
+        this->temp2Char.writeValue(t2);
+        this->pressureChar.writeValue(p);    // convert to hPa
+
+        // Serial.print("Temp2: ");
+        // Serial.println(t2);
+        // Serial.print("Pressure: ");
+        // Serial.println(p);
     }
 };

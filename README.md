@@ -15,16 +15,16 @@ AI.EcoSense is an open-source project designed to simplify garden care using Ard
 |-------------------|-----------------------------------------|
 | Operating System  | Raspbian 12 (bookworm)                  |
 | Main Controllers  | • Raspberry Pi 4                        |
-|                   | • Arduino Nano 33 BLE Sense             |
+|                   | • Arduino Nano 33 BLE Sense rev2        |
 | Communication     | NINA-B306 Bluetooth Module              |
-| Sensors           | • HTS221 (Temperature & Humidity)       |
+| Sensors           | • HS3003 (Temperature & Humidity)       |
 |                   | • LPS22HB (Barometric Pressure)         |
 |                   | • Soil Moisture Sensors (8595193516237) |
 
 ## 📊 Features
 
 ### Environmental Monitoring
-- Real-time temperature and humidity monitoring (HTS221)
+- Real-time temperature and humidity monitoring (HS3003)
 - Barometric pressure tracking (LPS22HB)
 - Soil moisture measurement
 - Water level monitoring
