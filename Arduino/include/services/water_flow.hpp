@@ -4,9 +4,9 @@
 
 #pragma once
 
-#include "sensorInterface.hpp"
+#include "serviceInterface.hpp"
 
-class WaterFlow final : public SensorInterface {
+class WaterFlow final : public ServiceInterface {
     // wrapper function
     static void pulse(WaterFlow *ptr) {
         ptr->pulseCount++; // Increment pulse count safely from ISR

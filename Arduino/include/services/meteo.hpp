@@ -2,9 +2,9 @@
 
 #include <Arduino_HS300x.h>
 #include <Arduino_LPS22HB.h>
-#include "sensorInterface.hpp"
+#include "serviceInterface.hpp"
 
-class Meteo final : public SensorInterface {
+class Meteo final : public ServiceInterface {
     BLEFloatCharacteristic tempChar, temp2Char;
     BLEFloatCharacteristic humidityChar;
     BLEFloatCharacteristic pressureChar;

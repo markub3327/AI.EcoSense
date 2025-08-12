@@ -7,6 +7,7 @@ from influxdb_client_3 import Point, InfluxDBClient3
 # Define UUIDs for characteristics
 CHARACTERISTICS = {
     "pump": ["19B11A01-F8F2-537E-4F6C-D104768A1215", "byte"],
+    "water_flow": ["19B11A02-F8F2-537E-4F6C-D104768A1215", "float"],
 
     "soil_pelargonium": ["19B11B01-F8F2-537E-4F6C-D104768A1215", "int"],
     "soil_kiwi_Boskoop": ["19B11B02-F8F2-537E-4F6C-D104768A1215", "int"],
@@ -41,7 +42,7 @@ TARGET_NAME = "AI.EcoSense"
 
 # InfluxDB credentials
 INFLUXDB_URL = "http://localhost:8181"
-INFLUXDB_TOKEN = "apiv3_UjbvcP-tII6g-VB6HUIc7yNc73NnrTz3FMdUpuXyhInprqAyZ2CaBw7njb-fq4HOkQlHBB9L-QQM9XRRgtmC_A"
+INFLUXDB_TOKEN = "apiv3_YrDkl5I1T5EZgiIhuSY-ErLkCXqqfsVY-87AzBGSEDoD7ePqEyHYwV_C8rLnTK5EdxAGtTBrClPtlVH5EEx2cw"
 INFLUXDB_ORG = "home"
 INFLUXDB_DB = "home"
 
@@ -102,6 +103,24 @@ async def subscribe_to_notifications(address):
                 )
 
             while client.is_connected:
+                # Get current system time
+            	now = datetime.now()
+                # Format time into bytes (e.g., Year, Month, Day, Hour, Minute, Second, DayOfWeek)
+            	# This is a simplified example; for actual BLE Time Service, you'd follow its spec
+            	time_bytes = bytes([
+                    now.year - 2000, # Assuming Arduino handles year as offset from 2000
+                    now.month,
+                    now.day,
+                    now.hour,
+                    now.minute,
+                    now.second,
+                    now.weekday() # Monday is 0, Sunday is 6
+            	])
+
+                print(f"Writing time {now} ({time_bytes}) to Arduino...")
+                await client.write_gatt_char("19B11701-F8F2-537E-4F6C-D104768A1215", time_bytes)
+                print("Time written.")
+
                 await asyncio.sleep(10)  # keep running and receiving notifications until connection ends
 
     # except BleakError as e:

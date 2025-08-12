@@ -2,8 +2,8 @@
 
 #include <ArduinoBLE.h>
 
-#include "../../lib/Task/src/messageQueue.hpp"
-#include "sensors/va_meter.hpp"
+#include "../../../lib/Task/src/messageQueue.hpp"
+#include "services/va_meter.hpp"
 
 
 class PowerManager final : public PeriodicTask {

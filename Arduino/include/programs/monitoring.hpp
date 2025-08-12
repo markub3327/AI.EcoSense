@@ -3,8 +3,8 @@
 #include <ArduinoBLE.h>
 
 #include "../../lib/Task/src/messageQueue.hpp"
-#include "sensors/soil_moisure.hpp"
-#include "sensors/meteo.hpp"
+#include "services/soil_moisure.hpp"
+#include "services/meteo.hpp"
 #include "pins.hpp"
 
 

@@ -6,10 +6,10 @@
 
 #include <ArduinoBLE.h>
 
-class SensorInterface {
+class ServiceInterface {
 
 public:
-    virtual ~SensorInterface() = default;
+    virtual ~ServiceInterface() = default;
 
     virtual void begin() = 0;
 

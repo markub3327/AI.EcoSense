@@ -2,7 +2,7 @@
 
 #include <Wire.h>
 #include "../lib/ina219/INA219.h"
-#include "sensorInterface.hpp"
+#include "serviceInterface.hpp"
 
 struct INA219Uuid {
     const char* shuntvoltageUuid;
@@ -11,7 +11,7 @@ struct INA219Uuid {
     const char* power_mWUuid;
 };
 
-class VAMeter final : public SensorInterface {
+class VAMeter final : public ServiceInterface {
     // Attributes
     BLEFloatCharacteristic shuntvoltageChar;
     BLEFloatCharacteristic busvoltageChar;

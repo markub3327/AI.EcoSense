@@ -1,8 +1,8 @@
 #pragma once
 
-#include "sensorInterface.hpp"
+#include "serviceInterface.hpp"
 
-class SoilMoisture final : public SensorInterface {
+class SoilMoisture final : public ServiceInterface {
     uint8_t pin;
     BLEUnsignedIntCharacteristic characteristic;
 
