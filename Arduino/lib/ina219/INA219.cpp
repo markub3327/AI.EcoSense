@@ -72,7 +72,7 @@ void INA219::setCalibration_32V_2A() {
   // MaximumLSB = 0,000488              (488uA per bit)
 
   // 4. Choose an LSB between the min and max values
-  //    (Preferrably a roundish number close to MinLSB)
+  //    (Preferably a roundish number close to MinLSB)
   // CurrentLSB = 0.0001 (100uA per bit)
 
   // 5. Compute the calibration register
@@ -176,7 +176,7 @@ void INA219::setCalibration_32V_1A() {
   // MaximumLSB = 0.000244              (244�A per bit)
 
   // 4. Choose an LSB between the min and max values
-  //    (Preferrably a roundish number close to MinLSB)
+  //    (Preferably a roundish number close to MinLSB)
   // CurrentLSB = 0.0000400 (40�A per bit)
 
   // 5. Compute the calibration register
@@ -261,7 +261,7 @@ void INA219::setCalibration_16V_400mA() {
   // MaximumLSB = 0.0000977              (98uA per bit)
 
   // 4. Choose an LSB between the min and max values
-  //    (Preferrably a roundish number close to MinLSB)
+  //    (Preferably a roundish number close to MinLSB)
   // CurrentLSB = 0.00005 (50uA per bit)
 
   // 5. Compute the calibration register
@@ -430,7 +430,7 @@ float INA219::getBusVoltage_V() {
 /*!
  *  @brief  Gets the current value in mA, taking into account the
  *          config settings and current LSB
- *  @return the current reading convereted to milliamps
+ *  @return the current reading converted to milliamps
  */
 float INA219::getCurrent_mA() {
   float valueDec = getCurrent_raw();
